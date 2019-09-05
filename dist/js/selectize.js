@@ -1594,6 +1594,9 @@
 			// sort optgroups
 			if (this.settings.lockOptgroupOrder) {
 				groups_order.sort(function(a, b) {
+					if (!self.optgroups[a] || !self.optgroups[b]){
+						return
+					}
 					var a_order = self.optgroups[a].$order || 0;
 					var b_order = self.optgroups[b].$order || 0;
 					return a_order - b_order;
