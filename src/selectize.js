@@ -952,7 +952,7 @@ $.extend(Selectize.prototype, {
 		window.setTimeout(function() {
 			self.ignoreFocus = false;
 			self.onFocus();
-			self.$control_input[[0].focus();
+			self.$control_input[0].focus();
 		}, 0);
 	},
 
