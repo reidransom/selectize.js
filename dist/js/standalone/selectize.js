@@ -2076,10 +2076,10 @@
 			if (self.isDisabled) return;
 	
 			self.ignoreFocus = true;
-			self.$control_input[0].focus();
 			window.setTimeout(function() {
 				self.ignoreFocus = false;
 				self.onFocus();
+				self.$control_input[0].focus();
 			}, 0);
 		},
 	
