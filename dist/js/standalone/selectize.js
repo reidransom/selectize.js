@@ -1423,7 +1423,7 @@
 			var self = this;
 			var field_label = self.settings.labelField;
 			var field_optgroup = self.settings.optgroupLabelField;
-	
+			var field_createName = self.settings.createNameField;
 			var templates = {
 				'optgroup': function(data) {
 					return '<div class="optgroup">' + data.html + '</div>';
@@ -1438,7 +1438,7 @@
 					return '<div class="item">' + escape(data[field_label]) + '</div>';
 				},
 				'option_create': function(data, escape) {
-					return '<div class="create">Add <strong>' + escape(data.input) + '</strong>&hellip;</div>';
+					return '<div class="create">'+ field_createName +'<strong>' + escape(data.input) + '</strong>&hellip;</div>';
 				}
 			};
 	
@@ -3360,6 +3360,7 @@
 		labelField: 'text',
 		disabledField: 'disabled',
 		optgroupLabelField: 'label',
+		createNameField: 'Add ',	// Pre text when creating a new item for dropdown box
 		optgroupValueField: 'value',
 		lockOptgroupOrder: false,
 	
