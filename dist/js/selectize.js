@@ -1629,8 +1629,14 @@
 			if (self.settings.highlight) {
 				$dropdown_content.removeHighlight();
 				if (results.query.length && results.tokens.length) {
-					for (i = 0, n = results.tokens.length; i < n; i++) {
-						highlight($dropdown_content, results.tokens[i].regex);
+					if (self.settings.highlight_phrase) {
+						var token = (results.query + '').replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
+						token = new RegExp(token, 'i');
+						highlight($dropdown_content, token);
+					} else {
+						for (i = 0, n = results.tokens.length; i < n; i++) {
+							highlight($dropdown_content, results.tokens[i].regex);
+						}
 					}
 				}
 			}
@@ -2704,6 +2710,7 @@
 		createOnBlur: false,
 		createFilter: null,
 		highlight: true,
+		highlight_phrase: false,
 		openOnFocus: true,
 		maxOptions: 1000,
 		maxItems: null,
