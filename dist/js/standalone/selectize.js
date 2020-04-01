@@ -2287,8 +2287,12 @@
 			// add create option
 			has_create_option = self.canCreate(query);
 			if (has_create_option) {
-				$dropdown_content.prepend(self.render('option_create', {input: query}));
-				$create = $($dropdown_content[0].childNodes[0]);
+				$create = $($dropdown_content[0].childNodes[0])
+				if (self.settings.create_position_last) {
+					$dropdown_content.append(self.render('option_create', {input: query}))
+				} else {
+					$dropdown_content.prepend(self.render('option_create', {input: query}))
+				}
 			}
 	
 			// activate
@@ -3343,6 +3347,7 @@
 		persist: true,
 		diacritics: true,
 		create: false,
+		create_position_last: false,
 		createOnBlur: false,
 		createFilter: null,
 		highlight: true,
