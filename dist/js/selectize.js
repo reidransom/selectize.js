@@ -1629,14 +1629,8 @@
 			if (self.settings.highlight) {
 				$dropdown_content.removeHighlight();
 				if (results.query.length && results.tokens.length) {
-					if (self.settings.highlight_phrase) {
-						var token = (results.query + '').replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
-						token = new RegExp(token, 'i');
-						highlight($dropdown_content, token);
-					} else {
-						for (i = 0, n = results.tokens.length; i < n; i++) {
-							highlight($dropdown_content, results.tokens[i].regex);
-						}
+					for (i = 0, n = results.tokens.length; i < n; i++) {
+						highlight($dropdown_content, results.tokens[i].regex);
 					}
 				}
 			}
@@ -2052,6 +2046,7 @@
 				if ($item.hasClass('active')) {
 					idx = self.$activeItems.indexOf($item[0]);
 					self.$activeItems.splice(idx, 1);
+	        $item.removeClass('active');
 				}
 	
 				self.items.splice(i, 1);
@@ -2710,7 +2705,6 @@
 		createOnBlur: false,
 		createFilter: null,
 		highlight: true,
-		highlight_phrase: false,
 		openOnFocus: true,
 		maxOptions: 1000,
 		maxItems: null,
